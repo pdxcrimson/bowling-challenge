@@ -64,7 +64,7 @@ Before installing dependencies, it is recommended to use a virtual environment t
    Two `.py` files are used for this to break up code. `bowling_calculator.py` is used to implement the logic for scoring, while `test_bowling.py` is used to run the tests with different types of parameters. This includes both positive and negative testing.
 6. **Test Coverage**
 
-The suite includes a comprehensive battery of both positive and negative test scenarios:
+   The suite includes a comprehensive battery of both positive and negative test scenarios:
 
 * **Positive Scenarios**: Verified a perfect game (300), all-spares (150), gutter games, and open frames. Specific focus was placed on the 10th-frame logic to ensure bonus rolls are correctly calculated for strikes and spares.
 
