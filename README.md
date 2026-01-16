@@ -37,6 +37,8 @@ Before installing dependencies, it is recommended to use a virtual environment t
    **Run with high verbosity (shows individual test IDs):**
    
    `pytest -v` or `pytest ./test_bowling.py -v`
+   
+   Addtional v's can be added for increased verbosity.
 
 ### Design choices ###
 
