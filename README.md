@@ -32,8 +32,8 @@ Before installing dependencies, it is recommended to use a virtual environment t
    `pip install pytest`
 4. **Running Tests**
    
-   `pytest`
+   `pytest` or `pytest ./test_bowling.py`
    
    **Run with high verbosity (shows individual test IDs):**
    
-   `pytest -v`
+   `pytest -v` or `pytest ./test_bowling.py -v`
