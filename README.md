@@ -62,6 +62,12 @@ Before installing dependencies, it is recommended to use a virtual environment t
 5. **File breakdown**
 
    Two `.py` files are used for this to break up code. `bowling_calculator.py` is used to implement the logic for scoring, while `test_bowling.py` is used to run the tests with different types of parameters. This includes both positive and negative testing.
-6. **Other**
+6. **Test Coverage**
 
-   Multiple positive and negative test scenarios are used. For positive scenarios, this includes a perfect game, all spares, no spares or strikes, an incomplete game, and all situations in the tenth frame. For negative, this includes starting with a spare, invalid input, exceeding 10 pins, extra rolls, a frame that adds up to 10 points without a spare, and a partial game with only 2 strikes.
+The suite includes a comprehensive battery of both positive and negative test scenarios:
+
+* **Positive Scenarios**: Verified a perfect game (300), all-spares (150), gutter games, and open frames. Specific focus was placed on the 10th-frame logic to ensure bonus rolls are correctly calculated for strikes and spares.
+
+* **Negative Scenarios**: Defensive checks ensure the system raises ValueError for starting with a spare, invalid characters, exceeding 10 pins per frame, and extra rolls after game completion.
+
+* **Edge Case Validation**: Explicitly tested notation integrity (ensuring 10-pin frames use the / symbol) and partial game state handling.
