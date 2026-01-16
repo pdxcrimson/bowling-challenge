@@ -5,26 +5,40 @@ from bowling_calculator import Bowling
 def calc():
     return Bowling()
 
-def test_provided_example_game(calc):
-    rolls = ["8", "/", "5", "4", "9", "0", "X", "X", "5", "/", "5", "3", "6", "3", "9", "/", "9", "/", "X"]
-    expected = [15, 24, 33, 58, 78, 93, 101, 110, 129, 149]
-    assert calc.calculate_score(rolls) == expected
+SCENARIOS = [
+    (
+        # Example in doc
+        ["8", "/", "5", "4", "9", "0", "X", "X", "5", "/", "5", "3", "6", "3", "9", "/", "9", "/", "X"],
+        [15, 24, 33, 58, 78, 93, 101, 110, 129, 149],
+        "provided_example"
+    ),
+    (
+        # Perfect game (all strikes)
+        ["X"] * 12,
+        [30, 60, 90, 120, 150, 180, 210, 240, 270, 300],
+        "perfect_game"
+    ),
+    (
+        # All spares
+        ["5", "/"] * 10 + ["5"],
+        [15, 30, 45, 60, 75, 90, 105, 120, 135, 150],
+        "all_spares"
+    ),
+    (
+        # No strikes or spares
+        ["4", "4"] * 10,
+        [8, 16, 24, 32, 40, 48, 56, 64, 72, 80],
+        "all_open_frames"
+    ),
+]
 
-def test_perfect_game(calc):
-    rolls = ["X"] * 12
-    expected = [30, 60, 90, 120, 150, 180, 210, 240, 270, 300]
-    assert calc.calculate_score(rolls) == expected
-
-def test_all_spares(calc):
-    # 5/ in frames 1-10 with a 5 bonus
-    rolls = ["5", "/"] * 10 + ["5"]
-    expected = [15, 30, 45, 60, 75, 90, 105, 120, 135, 150]
-    assert calc.calculate_score(rolls) == expected
-
-# No strikes or spares
-def test_all_open_frames(calc):
-    rolls = ["4", "4"] * 10
-    expected = [8, 16, 24, 32, 40, 48, 56, 64, 72, 80]
+@pytest.mark.parametrize(
+    "rolls, expected, name",
+    SCENARIOS,
+    ids=[case[2] for case in SCENARIOS]
+)
+def test_cumulative_scoring_scenarios(calc, rolls, expected, name):
+    """Verifies cumulative frame scores for various standard game scenarios."""
     assert calc.calculate_score(rolls) == expected
 
 # Test last frames for strike, spare, and no special rolls
